@@ -1,0 +1,25 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.mat-form-field {
+  margin-left: 16px;
+}
+.table-data {
+  margin-left: 16px;
+  margin-top: 16px;
+}
+.mat-table {
+  width: 200px;
+}
+.submit-button {
+  margin-left: 60px;
+}
+.mat-column-costPrice {
+  text-align: center;
+}
+.mat-column-sellingPrice {
+  text-align: center;
+}
+.mat-card {
+  background-color: #FFCCCC;
+}
