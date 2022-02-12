@@ -27,10 +27,6 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Cost Price</mat-label>
-    <input type="number" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (keyup)="updateSellingPrice()">
-  </mat-form-field>
 </div>
 <div *ngIf="authenticated">
   <mat-form-field appearance="fill">
@@ -41,6 +37,14 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+</div>
+<div *ngIf="authenticated">
+  <mat-form-field appearance="fill">
+  <mat-label>Cost Price</mat-label>
+  <input type="number" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (keyup)="updateSellingPrice()">
+  </mat-form-field>
+</div>
+<div *ngIf="authenticated">
   <mat-form-field appearance="fill" *ngIf="showSellingPrice">
     <mat-label>Selling Price</mat-label>
     <input type="number" disabled matInput [(ngModel)]="sellingPrice">
