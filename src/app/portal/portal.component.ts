@@ -12,6 +12,9 @@ sellingPrice: number;
 export class PortalComponent implements OnInit {
   passcode = "";
   showError = false;
+  showSellingPrice = false;
+  sellingPrice = 0;
+  costPrice = 0;
   gramList = [65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83];
   defaultGram = 75;
   bagWeightList = [33,34,35,36,37,38,39,40]
@@ -29,14 +32,19 @@ export class PortalComponent implements OnInit {
   ngOnInit(): void {
     this.selectedGram = this.defaultGram;
     this.selectedBagWeight = this.defaultBagWeight;
+    this.calculateApproxPrice();
   }
 
   changeGramValue(gram: number) {
     this.selectedGram = gram;
+    this.calculateApproxPrice();
+    this.updateSellingPrice();
   }
 
   changeBagWeight(bagWeight: number) {
     this.selectedBagWeight = bagWeight;
+    this.calculateApproxPrice();
+    this.updateSellingPrice();
   }
 
   calculateApproxPrice() {
@@ -66,6 +74,21 @@ export class PortalComponent implements OnInit {
     } else {
       this.showError = true;
     }
+  }
+
+  onCostPriceChange(event: Event) {
+    this.costPrice = parseInt((<HTMLInputElement>event.target).value);
+    this.updateSellingPrice();
+  }
+
+  updateSellingPrice() {
+    if (this.costPrice > 0) {
+      this.showSellingPrice = true;
+    } else {
+      this.showSellingPrice = false;
+    }
+    this.sellingPrice = (((this.costPrice + 120)/(this.selectedGram / 100 * this.selectedBagWeight)) * 80) + 150 - 450;
+    this.sellingPrice = Math.floor(this.sellingPrice);
   }
 
 }
