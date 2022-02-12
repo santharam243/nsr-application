@@ -76,11 +76,6 @@ export class PortalComponent implements OnInit {
     }
   }
 
-  onCostPriceChange(event: Event) {
-    this.costPrice = parseInt((<HTMLInputElement>event.target).value);
-    this.updateSellingPrice();
-  }
-
   updateSellingPrice() {
     if (this.costPrice > 0) {
       this.showSellingPrice = true;

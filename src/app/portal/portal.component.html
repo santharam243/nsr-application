@@ -4,12 +4,6 @@
     <span class="example-spacer"></span>
   </mat-toolbar>
 </p>
-<!-- <div *ngIf="!authenticated">
-  <mat-form-field appearance="fill">
-    <mat-label>Username</mat-label>
-    <input matInput placeholder="Username" [(ngModel)]="username">
-  </mat-form-field>
-</div> -->
 <div *ngIf="!authenticated">
   <mat-form-field appearance="fill">
     <mat-label>Passcode</mat-label>
@@ -35,7 +29,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Cost Price</mat-label>
-    <input type="number" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (keyup)="onCostPriceChange($event)">
+    <input type="number" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (keyup)="updateSellingPrice()">
   </mat-form-field>
 </div>
 <div *ngIf="authenticated">
