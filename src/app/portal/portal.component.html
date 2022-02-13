@@ -35,7 +35,7 @@
   </mat-form-field>
   <mat-form-field appearance="outline" *ngIf="showSellingPrice">
     <mat-label>Selling Price</mat-label>
-    <input style="color: black" type="number" disabled matInput [(ngModel)]="sellingPrice">
+    <input class="disabled-input" type="number" disabled matInput [(ngModel)]="sellingPrice">
   </mat-form-field>
 </div>
 <div class="table-data" *ngIf="calculated && authenticated">
