@@ -7,16 +7,8 @@
 <div *ngIf="!authenticated">
   <mat-form-field appearance="fill">
     <mat-label>Passcode</mat-label>
-    <input matInput placeholder="Passcode" [(ngModel)]="passcode">
+    <input type="password" matInput placeholder="Passcode" [(ngModel)]="passcode" (input)="login()">
   </mat-form-field>
-</div>
-<div *ngIf="!authenticated && showError">
-  <mat-form-field appearance="fill">
-    <mat-card>Incorrect Passcode</mat-card>
-  </mat-form-field>
-</div>
-<div *ngIf="!authenticated" class="submit-button">
-  <button type="button" mat-flat-button color="primary" (click)="login()">Login</button>
 </div>
 <div *ngIf="authenticated">
   <mat-form-field appearance="fill">
@@ -41,13 +33,13 @@
 <div *ngIf="authenticated">
   <mat-form-field appearance="fill">
   <mat-label>Cost Price</mat-label>
-  <input type="number" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (keyup)="updateSellingPrice()">
+  <input type="number" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (input)="updateSellingPrice()">
   </mat-form-field>
 </div>
 <div *ngIf="authenticated">
   <mat-form-field appearance="fill" *ngIf="showSellingPrice">
     <mat-label>Selling Price</mat-label>
-    <input type="number" disabled matInput [(ngModel)]="sellingPrice">
+    <input style="color: black" type="number" disabled matInput [(ngModel)]="sellingPrice">
   </mat-form-field>
 </div>
 <div class="table-data" *ngIf="calculated && authenticated">
