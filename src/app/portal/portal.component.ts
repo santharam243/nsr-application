@@ -76,11 +76,11 @@ export class PortalComponent implements OnInit {
   updateSellingPrice() {
     if (this.costPrice > 0) {
       this.showSellingPrice = true;
+      this.sellingPrice = (((this.costPrice + 120)/(this.selectedGram / 100 * this.selectedBagWeight)) * 80) + 150 - 450;
+      this.sellingPrice = Math.floor(this.sellingPrice);
     } else {
       this.showSellingPrice = false;
     }
-    this.sellingPrice = (((this.costPrice + 120)/(this.selectedGram / 100 * this.selectedBagWeight)) * 80) + 150 - 450;
-    this.sellingPrice = Math.floor(this.sellingPrice);
   }
 
 }

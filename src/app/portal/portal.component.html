@@ -5,13 +5,13 @@
   </mat-toolbar>
 </p>
 <div *ngIf="!authenticated">
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
     <mat-label>Passcode</mat-label>
     <input type="password" matInput placeholder="Passcode" [(ngModel)]="passcode" (input)="login()">
   </mat-form-field>
 </div>
 <div *ngIf="authenticated">
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
     <mat-label>Gram of peanut</mat-label>
     <mat-select [(value)]="defaultGram" (selectionChange)="changeGramValue($event.value)">
       <mat-option *ngFor="let gram of gramList" [value]="gram">
@@ -19,7 +19,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
     <mat-label>Bag Weight</mat-label>
     <mat-select [(value)]="defaultBagWeight" (selectionChange)="changeBagWeight($event.value)">
       <mat-option *ngFor="let bagWeight of bagWeightList" [value]="bagWeight">
@@ -29,11 +29,11 @@
   </mat-form-field>
 </div>
 <div *ngIf="authenticated">
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="outline">
   <mat-label>Cost Price</mat-label>
   <input type="number" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (input)="updateSellingPrice()">
   </mat-form-field>
-  <mat-form-field appearance="fill" *ngIf="showSellingPrice">
+  <mat-form-field appearance="outline" *ngIf="showSellingPrice">
     <mat-label>Selling Price</mat-label>
     <input style="color: black" type="number" disabled matInput [(ngModel)]="sellingPrice">
   </mat-form-field>
