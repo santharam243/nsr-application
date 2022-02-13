@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 export interface PriceTable {
-costPrice: number;
-sellingPrice: number;
+  gram: number,
+  bagWeight: number,
+  damageCost: number,
+  moistureProfit: number,
+  costPrice: number;
+  sellingPrice: number;
 }
 @Component({
   selector: 'app-portal',
@@ -18,9 +22,15 @@ export class PortalComponent implements OnInit {
   defaultGram = 75;
   bagWeightList = [33,34,35,36,37,38,39,40]
   defaultBagWeight = 36;
+  damageCostList = [{value:150, checked: true},{value:250, checked: false}];
+  defaultDamageCost = 150;
+  moistureProfitList = [{value:450, checked: true},{value:150, checked: false}];
+  defaultMoistureProfit = 450;
   selectedGram: number = 0;
   selectedBagWeight: number = 0;
-  displayedColumns: string[] = ['costPrice', 'sellingPrice'];
+  selectedDamageCost: number = 0;
+  selectedMoistureProfit: number = 0;
+  displayedColumns: string[] = ['inputParams', 'costPrice', 'sellingPrice'];
   tableData: PriceTable[] = [];
   dataSource: PriceTable[] = [];
   calculated = false;
@@ -31,6 +41,8 @@ export class PortalComponent implements OnInit {
   ngOnInit(): void {
     this.selectedGram = this.defaultGram;
     this.selectedBagWeight = this.defaultBagWeight;
+    this.selectedDamageCost = this.defaultDamageCost;
+    this.selectedMoistureProfit = this.defaultMoistureProfit;
     this.calculateApproxPrice();
   }
 
@@ -46,6 +58,18 @@ export class PortalComponent implements OnInit {
     this.updateSellingPrice();
   }
 
+  changeDamageCost(damageCost: number) {
+    this.selectedDamageCost = damageCost;
+    this.calculateApproxPrice();
+    this.updateSellingPrice();
+  }
+
+  changeMoistureProfit(moistureProfit: number) {
+    this.selectedMoistureProfit = moistureProfit;
+    this.calculateApproxPrice();
+    this.updateSellingPrice();
+  }
+
   calculateApproxPrice() {
     this.tableData = [];
     this.dataSource = [];
@@ -54,9 +78,13 @@ export class PortalComponent implements OnInit {
     let modalPrice = minCostPrice;
     let approxPrice = 0;
     while(modalPrice <= maxCostPrice) {
-      approxPrice = (((modalPrice + 120)/(this.selectedGram / 100 * this.selectedBagWeight)) * 80) + 150 - 450;
+      approxPrice = (((modalPrice + 120)/(this.selectedGram / 100 * this.selectedBagWeight)) * 80) + this.selectedDamageCost - this.selectedMoistureProfit;
       console.log(modalPrice.toString() + " ---> " + approxPrice.toString());
       let priceMap: PriceTable = {
+        gram: this.selectedGram,
+        bagWeight: this.selectedBagWeight,
+        damageCost: this.selectedDamageCost,
+        moistureProfit: this.selectedMoistureProfit,
         costPrice: modalPrice,
         sellingPrice: Math.floor(approxPrice)
       };
@@ -76,7 +104,7 @@ export class PortalComponent implements OnInit {
   updateSellingPrice() {
     if (this.costPrice > 0) {
       this.showSellingPrice = true;
-      this.sellingPrice = (((this.costPrice + 120)/(this.selectedGram / 100 * this.selectedBagWeight)) * 80) + 150 - 450;
+      this.sellingPrice = (((this.costPrice + 120)/(this.selectedGram / 100 * this.selectedBagWeight)) * 80) + this.selectedDamageCost - this.selectedMoistureProfit;
       this.sellingPrice = Math.floor(this.sellingPrice);
     } else {
       this.showSellingPrice = false;
