@@ -19,8 +19,6 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-</div>
-<div *ngIf="authenticated">
   <mat-form-field appearance="fill">
     <mat-label>Bag Weight</mat-label>
     <mat-select [(value)]="defaultBagWeight" (selectionChange)="changeBagWeight($event.value)">
@@ -35,8 +33,6 @@
   <mat-label>Cost Price</mat-label>
   <input type="number" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (input)="updateSellingPrice()">
   </mat-form-field>
-</div>
-<div *ngIf="authenticated">
   <mat-form-field appearance="fill" *ngIf="showSellingPrice">
     <mat-label>Selling Price</mat-label>
     <input style="color: black" type="number" disabled matInput [(ngModel)]="sellingPrice">
