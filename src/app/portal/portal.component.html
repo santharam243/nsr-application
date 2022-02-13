@@ -35,6 +35,8 @@
     [value]=damageCost.value [checked]=damageCost.checked (change)="changeDamageCost($event.value)">
     {{damageCost.value}}</mat-radio-button>
   </mat-radio-group>
+</div>
+<div class="radio-div" *ngIf="authenticated">
   <label class="radio-label">Moisture Profit</label>
   <mat-radio-group aria-label="Moisture Profit">
     <mat-radio-button *ngFor="let moistureProfit of moistureProfitList" 
@@ -53,39 +55,20 @@
   </mat-form-field>
 </div>
 <div class="table-data" *ngIf="calculated && authenticated">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="gram">
-      <th mat-header-cell *matHeaderCellDef> Gram </th>
-      <td mat-cell *matCellDef="let element"> {{element.gram}} </td>
-    </ng-container>
-    <ng-container matColumnDef="bagWeight">
-      <th mat-header-cell *matHeaderCellDef> Bag Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.bagWeight}} </td>
-    </ng-container>
-    <ng-container matColumnDef="damageCost">
-      <th mat-header-cell *matHeaderCellDef> Damage Cost </th>
-      <td mat-cell *matCellDef="let element"> {{element.damageCost}} </td>
-    </ng-container>
-    <ng-container matColumnDef="moistureProfit">
-      <th mat-header-cell *matHeaderCellDef> Moisture Profit </th>
-      <td mat-cell *matCellDef="let element"> {{element.moistureProfit}} </td>
-    </ng-container>
-    <ng-container matColumnDef="inputParams">
-      <th mat-header-cell *matHeaderCellDef> Input Params </th>
-      <td mat-cell *matCellDef="let element"> 
-        {{element.gram + '%|' + element.bagWeight + 'Kg|' + element.damageCost + 'Rs|' + element.moistureProfit + 'Rs'}} 
-      </td>
-    </ng-container>
+  <table mat-table [dataSource]="dataSource" class="table-container mat-elevation-z8">
     <ng-container matColumnDef="costPrice">
       <th mat-header-cell *matHeaderCellDef> Cost Price </th>
       <td mat-cell *matCellDef="let element"> {{element.costPrice}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{inputParam1}} </td>
     </ng-container>
     <ng-container matColumnDef="sellingPrice">
       <th mat-header-cell *matHeaderCellDef> Selling Price </th>
       <td mat-cell *matCellDef="let element"> {{element.sellingPrice}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{inputParam2}} </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
   </table>
 </div>
 

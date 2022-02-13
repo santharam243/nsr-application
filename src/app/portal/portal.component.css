@@ -27,3 +27,10 @@
 .radio-label {
   margin-left: 16px;
 }
+.table-container {
+  height: 400px;
+  overflow: auto;
+}
+td { 
+  white-space:pre 
+}

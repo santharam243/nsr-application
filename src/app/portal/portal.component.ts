@@ -30,11 +30,13 @@ export class PortalComponent implements OnInit {
   selectedBagWeight: number = 0;
   selectedDamageCost: number = 0;
   selectedMoistureProfit: number = 0;
-  displayedColumns: string[] = ['inputParams', 'costPrice', 'sellingPrice'];
+  displayedColumns: string[] = ['costPrice', 'sellingPrice'];
   tableData: PriceTable[] = [];
   dataSource: PriceTable[] = [];
   calculated = false;
   authenticated = false;
+  inputParam1: String = '';
+  inputParam2: String = '';
 
   constructor() { }
 
@@ -44,30 +46,42 @@ export class PortalComponent implements OnInit {
     this.selectedDamageCost = this.defaultDamageCost;
     this.selectedMoistureProfit = this.defaultMoistureProfit;
     this.calculateApproxPrice();
+    this.setFooterInputParams();
+  }
+
+  setFooterInputParams() {
+    this.inputParam1 = this.selectedGram + '% \n Damage Rs. ' 
+        + this.selectedDamageCost;
+    this.inputParam2 = this.selectedBagWeight + 'Kg \n Moisture Rs. ' 
+        + this.selectedMoistureProfit;
   }
 
   changeGramValue(gram: number) {
     this.selectedGram = gram;
     this.calculateApproxPrice();
     this.updateSellingPrice();
+    this.setFooterInputParams();
   }
 
   changeBagWeight(bagWeight: number) {
     this.selectedBagWeight = bagWeight;
     this.calculateApproxPrice();
     this.updateSellingPrice();
+    this.setFooterInputParams();
   }
 
   changeDamageCost(damageCost: number) {
     this.selectedDamageCost = damageCost;
     this.calculateApproxPrice();
     this.updateSellingPrice();
+    this.setFooterInputParams();
   }
 
   changeMoistureProfit(moistureProfit: number) {
     this.selectedMoistureProfit = moistureProfit;
     this.calculateApproxPrice();
     this.updateSellingPrice();
+    this.setFooterInputParams();
   }
 
   calculateApproxPrice() {
