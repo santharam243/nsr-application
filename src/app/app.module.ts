@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
+import "@angular/common/locales/global/en-IN";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { ScrollTopComponent } from './scroll-top/scroll-top.component';
     MatCardModule,
     MatIconModule
     ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: "en-IN" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

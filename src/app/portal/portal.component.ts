@@ -93,7 +93,6 @@ export class PortalComponent implements OnInit {
     let approxPrice = 0;
     while(modalPrice <= maxCostPrice) {
       approxPrice = (((modalPrice + 120)/(this.selectedGram / 100 * this.selectedBagWeight)) * 80) + this.selectedDamageCost - this.selectedMoistureProfit;
-      console.log(modalPrice.toString() + " ---> " + approxPrice.toString());
       let priceMap: PriceTable = {
         gram: this.selectedGram,
         bagWeight: this.selectedBagWeight,
@@ -116,6 +115,10 @@ export class PortalComponent implements OnInit {
   }
 
   updateSellingPrice() {
+    if (isNaN(this.costPrice)) {
+      this.costPrice = 0;
+      return;
+    }
     if (this.costPrice > 0) {
       this.showSellingPrice = true;
       this.sellingPrice = (((this.costPrice + 120)/(this.selectedGram / 100 * this.selectedBagWeight)) * 80) + this.selectedDamageCost - this.selectedMoistureProfit;
