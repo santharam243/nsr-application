@@ -50,7 +50,7 @@ export class PortalComponent implements OnInit {
   }
 
   setFooterInputParams() {
-    this.inputParam1 = this.selectedGram + '% \n Damage Rs. ' 
+    this.inputParam1 = this.selectedGram + '% \n Pinju Rs. ' 
         + this.selectedDamageCost;
     this.inputParam2 = this.selectedBagWeight + 'Kg \n Moisture Rs. ' 
         + this.selectedMoistureProfit;

@@ -8,6 +8,9 @@
   <mat-form-field appearance="outline">
     <mat-label>Passcode</mat-label>
     <input type="password" matInput placeholder="Passcode" [(ngModel)]="passcode" (input)="login()">
+    <button mat-button *ngIf="passcode" matSuffix mat-icon-button aria-label="Clear" (click)="passcode=''">
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
 </div>
 <div *ngIf="authenticated">
@@ -29,8 +32,8 @@
   </mat-form-field>
 </div>
 <div class="radio-div" *ngIf="authenticated">
-  <label class="radio-label">Damage Cost</label>
-  <mat-radio-group aria-label="Damage Cost">
+  <label class="radio-label">Pinju Cost</label>
+  <mat-radio-group aria-label="Pinju Cost">
     <mat-radio-button *ngFor="let damageCost of damageCostList" 
     [value]=damageCost.value [checked]=damageCost.checked (change)="changeDamageCost($event.value)">
     {{damageCost.value}}</mat-radio-button>
