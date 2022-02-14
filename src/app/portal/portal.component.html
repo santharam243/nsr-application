@@ -16,19 +16,17 @@
 <div *ngIf="authenticated">
   <mat-form-field appearance="outline" class="input-width">
     <mat-label>Gram of peanut</mat-label>
-    <mat-select [(value)]="defaultGram" (selectionChange)="changeGramValue($event.value)">
-      <mat-option *ngFor="let gram of gramList" [value]="gram">
-        {{gram}}
-      </mat-option>
-    </mat-select>
+    <select matNativeControl [(ngModel)]="defaultGram" (change)="changeGramValue($event)">
+      <option *ngFor="let gram of gramList" [value]="gram">
+        {{gram}}</option>
+    </select>
   </mat-form-field>
   <mat-form-field appearance="outline" class="input-width">
     <mat-label>Bag Weight</mat-label>
-    <mat-select [(value)]="defaultBagWeight" (selectionChange)="changeBagWeight($event.value)">
-      <mat-option *ngFor="let bagWeight of bagWeightList" [value]="bagWeight">
-        {{bagWeight}}
-      </mat-option>
-    </mat-select>
+    <select matNativeControl [(ngModel)]="defaultBagWeight" (change)="changeBagWeight($event)">
+      <option *ngFor="let bagWeight of bagWeightList" [value]="bagWeight">
+        {{bagWeight}}</option>
+    </select>
   </mat-form-field>
 </div>
 <div class="radio-div" *ngIf="authenticated">
@@ -58,7 +56,7 @@
   </mat-form-field>
   <mat-form-field appearance="outline" *ngIf="showSellingPrice" class="input-width">
     <mat-label>Selling Price</mat-label>
-    <input class="disabled-input" type="number" disabled matInput [(ngModel)]="sellingPrice">
+    <input class="disabled-input" type="tel" disabled matInput [(ngModel)]="sellingPrice">
   </mat-form-field>
 </div>
 <div class="table-data" *ngIf="calculated && authenticated">

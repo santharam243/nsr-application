@@ -15,8 +15,7 @@
   text-align: center;
 }
 .disabled-input {
-  color: mediumblue;
-  font-weight: bold;
+  color: black;
 }
 .mat-radio-button {
   margin-left: 16px;

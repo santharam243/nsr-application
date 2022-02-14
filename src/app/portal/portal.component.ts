@@ -56,15 +56,15 @@ export class PortalComponent implements OnInit {
         + this.selectedMoistureProfit;
   }
 
-  changeGramValue(gram: number) {
-    this.selectedGram = gram;
+  changeGramValue(event: Event) {
+    this.selectedGram = parseInt((<HTMLInputElement>event.target).value);
     this.calculateApproxPrice();
     this.updateSellingPrice();
     this.setFooterInputParams();
   }
 
-  changeBagWeight(bagWeight: number) {
-    this.selectedBagWeight = bagWeight;
+  changeBagWeight(event: Event) {
+    this.selectedBagWeight = parseInt((<HTMLInputElement>event.target).value);;
     this.calculateApproxPrice();
     this.updateSellingPrice();
     this.setFooterInputParams();
