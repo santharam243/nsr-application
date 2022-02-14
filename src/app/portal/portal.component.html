@@ -7,14 +7,14 @@
 <div *ngIf="!authenticated">
   <mat-form-field appearance="outline">
     <mat-label>Passcode</mat-label>
-    <input type="number" pattern="[0-9]*" inputmode="numeric" matInput placeholder="Passcode" [(ngModel)]="passcode" (input)="login()">
+    <input type="password" inputmode="numeric" matInput placeholder="Passcode" [(ngModel)]="passcode" (input)="login()">
     <button mat-button *ngIf="passcode" matSuffix mat-icon-button aria-label="Clear" (click)="passcode=''">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
 </div>
 <div *ngIf="authenticated">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="input-width">
     <mat-label>Gram of peanut</mat-label>
     <mat-select [(value)]="defaultGram" (selectionChange)="changeGramValue($event.value)">
       <mat-option *ngFor="let gram of gramList" [value]="gram">
@@ -22,7 +22,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="input-width">
     <mat-label>Bag Weight</mat-label>
     <mat-select [(value)]="defaultBagWeight" (selectionChange)="changeBagWeight($event.value)">
       <mat-option *ngFor="let bagWeight of bagWeightList" [value]="bagWeight">
@@ -47,15 +47,16 @@
     {{moistureProfit.value}}</mat-radio-button>
   </mat-radio-group> 
 </div>
+<mat-divider *ngIf="authenticated" class="divider"></mat-divider>
 <div *ngIf="authenticated">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="input-width">
   <mat-label>Cost Price</mat-label>
-  <input type="number" pattern="[0-9]*" inputmode="numeric" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (input)="updateSellingPrice()">
+  <input type="tel" inputmode="numeric" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (input)="updateSellingPrice()">
   <button mat-button *ngIf="costPrice" matSuffix mat-icon-button aria-label="Clear" (click)="costPrice=0; updateSellingPrice();">
     <mat-icon>close</mat-icon>
   </button>
   </mat-form-field>
-  <mat-form-field appearance="outline" *ngIf="showSellingPrice">
+  <mat-form-field appearance="outline" *ngIf="showSellingPrice" class="input-width">
     <mat-label>Selling Price</mat-label>
     <input class="disabled-input" type="number" disabled matInput [(ngModel)]="sellingPrice">
   </mat-form-field>

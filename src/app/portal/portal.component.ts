@@ -115,6 +115,7 @@ export class PortalComponent implements OnInit {
   }
 
   updateSellingPrice() {
+    this.costPrice = parseInt(this.costPrice.toString());
     if (isNaN(this.costPrice)) {
       this.costPrice = 0;
       return;

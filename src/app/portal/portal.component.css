@@ -32,5 +32,11 @@
   overflow: auto;
 }
 td { 
-  white-space:pre 
+  white-space:pre;
+}
+.input-width {
+  width: 120px;
+}
+.divider {
+  margin-bottom: 16px;
 }

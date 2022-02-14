@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 import "@angular/common/locales/global/en-IN";
@@ -37,7 +38,8 @@ import "@angular/common/locales/global/en-IN";
     MatButtonModule,
     MatTableModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatDividerModule
     ],
   providers: [{ provide: LOCALE_ID, useValue: "en-IN" }],
   bootstrap: [AppComponent]
