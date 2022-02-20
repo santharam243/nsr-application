@@ -49,7 +49,7 @@
 <div *ngIf="authenticated">
   <mat-form-field appearance="outline" class="input-width">
   <mat-label>Cost Price</mat-label>
-  <input type="text" pattern="[0-9]*" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (input)="updateSellingPrice()">
+  <input type="text" pattern="[0-9]*" inputmode="numeric" matInput placeholder="Cost Price" [(ngModel)]="costPrice" (input)="updateSellingPrice()">
   <button mat-button *ngIf="costPrice" matSuffix mat-icon-button aria-label="Clear" (click)="costPrice=0; updateSellingPrice();">
     <mat-icon>close</mat-icon>
   </button>
