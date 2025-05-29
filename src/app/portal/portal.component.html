@@ -15,7 +15,7 @@
 </div>
 <div *ngIf="authenticated">
   <mat-form-field appearance="outline" class="input-width">
-    <mat-label>Gram of peanut</mat-label>
+    <mat-label>Peanut Gram</mat-label>
     <select matNativeControl [(ngModel)]="defaultGram" (change)="changeGramValue($event)">
       <option *ngFor="let gram of gramList" [value]="gram">
         {{gram}}</option>
