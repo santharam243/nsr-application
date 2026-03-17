@@ -88,7 +88,7 @@ export class PortalComponent implements OnInit {
     this.tableData = [];
     this.dataSource = [];
     const minCostPrice = 1500;
-    const maxCostPrice = 3500;
+    const maxCostPrice = 6000;
     let modalPrice = minCostPrice;
     let approxPrice = 0;
     while(modalPrice <= maxCostPrice) {
