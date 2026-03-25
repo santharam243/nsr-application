@@ -24,7 +24,7 @@ export class PortalComponent implements OnInit {
   defaultBagWeight = 36;
   damageCostList = [{value:150, checked: true},{value:250, checked: false}];
   defaultDamageCost = 150;
-  moistureProfitList = [{value:450, checked: true},{value:150, checked: false}];
+  moistureProfitList = [{value:450, checked: true},{value:300, checked: false},{value:150, checked: false}];
   defaultMoistureProfit = 450;
   selectedGram: number = 0;
   selectedBagWeight: number = 0;
